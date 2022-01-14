@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HSC ফলাফল হিসাব</title>
+    <meta name="theme-color" content="#7F00FF" />
+    <meta property="og:description" content="আপনার HSC পরীক্ষার সম্ভাব্য ফলাফল নির্ণয় করুন" />
+    <meta property="og:image" content="img/ogImage.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&display=swap');
+        
+        body {
+            background-color: #DDDDDD;
+            font-family: 'Baloo Da 2', cursive;
+            padding: 30px 0px;
+            color: #666666;
+        }
+        select::-ms-expand {
+            display: none;
+        }
+        select {
+            /* for Firefox */
+            -moz-appearance: none;
+            /* for Chrome */
+            -webkit-appearance: none;
+        }
+        * {
+            font-family: 'Baloo Da 2', cursive;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .inputBig {
+            width: calc(100% - 8px);
+            outline: 0;
+            border: 2px #CCCCCC solid;
+            padding: 8px 10px;
+            border-radius: 10px;
+            margin: 4px;
+        }
+        .inputSmall {
+            width: 50px;
+            outline: 0;
+            border: 2px #CCCCCC solid;
+            padding: 8px;
+            border-radius: 10px;
+            margin: 4px;
+            text-align: center;
+        }
+        .inputSubmit {
+            width: calc(100% - 8px);
+            outline: 0;
+            border: 2px #7F00FF solid;
+            padding: 8px 10px;
+            border-radius: 10px;
+            background-color: #7F00FF;
+            color: #ffffff;
+            font-weight: bold;
+            margin: 4px;
+        }
+        
+        .title {
+            font-size: 30px;
+            line-height: 120%;
+            font-weight: bold;
+            margin: 4px;
+        }
+        #welcomeOption {
+            line-height: 120%;
+            background: #7F00FF;
+            color: #ffffff;
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            margin-bottom: 12px;
+            padding: 18px;
+            overflow: auto;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow:
+                2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+                6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+                12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+                22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+                41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+                100px 100px 80px rgba(0, 0, 0, 0.07)
+        }
+        #firstOption {
+            background: #ffffff;
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            padding: 18px;
+            overflow: auto;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow:
+                2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+                6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+                12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+                22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+                41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+                100px 100px 80px rgba(0, 0, 0, 0.07)
+        }
+        #secondOption, #thirdOption, #fourthOption, #finalOption {
+            background: #ffffff;
+            width: 90%;
+            max-width: 800px;
+            padding: 18px;
+            overflow: auto;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow:
+                2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+                6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+                12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+                22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+                41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+                100px 100px 80px rgba(0, 0, 0, 0.07);
+            display: none;
+            margin: auto;
+        }
+        
+        .resultTable {
+            width: 100%; 
+            border-radius: 10px;
+            border-collapse: separate; 
+            border-spacing: 4px;
+        }
+        .resultTable th {
+            background-color: #7F00FF;
+            color: #ffffff;
+            border-radius: 10px;
+            padding: 8px;
+        }
+        .resultTable td {
+            background-color: #EEEEEE;
+            border-radius: 10px;
+            padding: 8px;
+        }
+        .totalGPA {
+            display: inline-block;
+            background-color: #7F00FF;
+            color: #ffffff;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 4px 2px;
+            width: calc(50% - 8px);
+            font-weight: bold;
+            line-height: 150%;
+        }
+        .GPA {
+            font-size: 30px;
+            color: #ffffff;
+            line-height: 110%;
+        }
+        .notice {
+            background-color: #DDDDDD;
+            border-radius: 10px;
+            margin: 6px 4px;
+            font-size: 15px;
+            padding: 10px 12px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div id="welcomeOption">
+        <div class="title">HSC ফলাফল হিসাব</div>
+        <i>(বিজ্ঞান বিভাগের জন্য)</i>
+    </div>
+    <div id="firstOption">
+        <div class="title">আপনার চতুর্থ বিষয় কোনটি?</div>
+        <select id="optionalSubject" class="inputBig">
+            <option>উচ্চতর গণিত</option>
+            <option>জীববিজ্ঞান</option>
+        </select>
+        <input type="submit" value="পরবর্তী" class="inputSubmit" onclick="porobortee1()"></input>
+    </div>
+    <div id="secondOption">
+        <div class="title">JSC এর ফলাফল</div>
+        <div class="notice"><b>বি. দ্র:</b> JSC এর মার্কশিটে নম্বরের কথা উল্লেখ না থাকলেও প্রতিটি বিষয়ের নম্বর বোর্ডের কাছে সংরক্ষিত রয়েছে এবং এই নম্বর দিয়েই সাবজেক্ট ম্যাপিং-এর হিসাব করা হবে। আপনার আত্মবিশ্বাস অনুযায়ী কোন বিষয়ে কত পেয়েছিলেন তা আন্দাজ করে নম্বর দিন। যেমন: A- পেলে 60-69 এর মধ্যে আপনার আত্মবিশ্বাস অনুযায়ী নম্বর লিখুন।</div>
+        <b>বাংলা</b> <i>(100 এর মধ্যে নম্বর, যেমন: 82)</i>
+        <input type="number" class="inputBig" id="jscBangla" placeholder="বাংলায় প্রাপ্ত নম্বর"></input>
+        <b>ইংরেজি</b> <i>(100 এর মধ্যে নম্বর, যেমন: 82)</i>
+        <input type="number" class="inputBig" id="jscEnglish" placeholder="ইংরেজিতে প্রাপ্ত নম্বর"></input>
+        <b>বিজ্ঞান</b> <i>(100 এর মধ্যে নম্বর, যেমন: 82)</i>
+        <input type="number" class="inputBig" id="jscScience" placeholder="বিজ্ঞানে প্রাপ্ত নম্বর"></input>
+        <b>গণিত</b> <i>(100 এর মধ্যে নম্বর, যেমন: 82)</i>
+        <input type="number" class="inputBig" id="jscMath" placeholder="গণিতে প্রাপ্ত নম্বর"></input>
+        <b>ICT</b> <i>(50 এর মধ্যে নম্বর, যেমন: 41)</i>
+        <input type="number" class="inputBig" id="jscICT" placeholder="ICT-তে প্রাপ্ত নম্বর"></input>
+        <input type="submit" value="পরবর্তী" class="inputSubmit" onclick="porobortee2()"></input>
+    </div>
+    <div id="thirdOption">
+        <div class="title">SSC এর ফলাফল</div>
+        <b>বাংলা</b> <i>(200 এর মধ্যে নম্বর, যেমন: 164)</i>
+        <input type="number" class="inputBig" id="sscBangla" placeholder="বাংলায় প্রাপ্ত নম্বর"></input>
+        <b>ইংরেজি</b> <i>(200 এর মধ্যে নম্বর, যেমন: 164)</i>
+        <input type="number" class="inputBig" id="sscEnglish" placeholder="ইংরেজিতে প্রাপ্ত নম্বর"></input>
+        <b><span id="getOptionalSubject"></span></b> <i>(100 এর মধ্যে নম্বর, যেমন: 82)</i>
+        <input type="number" class="inputBig" id="sscFourth" placeholder="চতুর্থ বিষয়ে প্রাপ্ত নম্বর"></input>
+        <b>ICT</b> <i>(50 এর মধ্যে নম্বর, যেমন: 41)</i>
+        <input type="number" class="inputBig" id="sscICT" placeholder="ICT-তে প্রাপ্ত নম্বর"></input>
+        <input type="submit" value="পরবর্তী" class="inputSubmit" onclick="porobortee3()"></input>
+    </div>
+    <div id="fourthOption">
+        <div class="title">যে তিনটি পরীক্ষা হয়েছে সেগুলোর মধ্যে কী পেতে পারেন?</div>
+        <center>
+            <table>
+                <tr>
+                    <td style="width: 100px;">পদার্থবিজ্ঞান</td>
+                    <td>
+                        <select id="hscPhysics" class="inputSmall">
+                            <option value="5">A+</option>
+                            <option value="4.5">A</option>
+                            <option value="4">A-</option>
+                            <option value="3">B</option>
+                            <option value="2">C</option>
+                            <option value="1">D</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>রসায়ন</td>
+                    <td>
+                        <select id="hscChemistry" class="inputSmall">
+                            <option value="5">A+</option>
+                            <option value="4.5">A</option>
+                            <option value="4">A-</option>
+                            <option value="3">B</option>
+                            <option value="2">C</option>
+                            <option value="1">D</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><span id="printMainSubject"></span></td>
+                    <td>
+                        <select id="hscMain" class="inputSmall">
+                            <option value="5">A+</option>
+                            <option value="4.5">A</option>
+                            <option value="4">A-</option>
+                            <option value="3">B</option>
+                            <option value="2">C</option>
+                            <option value="1">D</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </center>
+        <input type="submit" value="পরবর্তী" class="inputSubmit" onclick="porobortee4()"></input>
+    </div>
+    <div id="finalOption">
+        <div class="title">আপনার HSC এর সম্ভাব্য ফলাফল</div>
+        <table class="resultTable">
+            <tr>
+                <th>বিষয়</th>
+                <th>GPA</th>
+                <th>গ্রেড</th>
+            </tr>
+            <tr>
+                <td>বাংলা</td>
+                <td id="printBanglaGPA"></td>
+                <td id="printBanglaGrade"></td>
+            </tr>
+            <tr>
+                <td>ইংরেজি</td>
+                <td id="printEnglishGPA"></td>
+                <td id="printEnglishGrade"></td>
+            </tr>
+            <tr>
+                <td>ICT</td>
+                <td id="printICTGPA"></td>
+                <td id="printICTGrade"></td>
+            </tr>
+            <tr>
+                <td>পদার্থবিজ্ঞান</td>
+                <td id="printPhysicsGPA"></td>
+                <td id="printPhysicsGrade"></td>
+            </tr>
+            <tr>
+                <td>রসায়ন</td>
+                <td id="printChemistryGPA"></td>
+                <td id="printChemistryGrade"></td>
+            </tr>
+            <tr>
+                <td><span id="printMainSubject2"></span></td>
+                <td id="printMainGPA"></td>
+                <td id="printMainGrade"></td>
+            </tr>
+            <tr>
+                <td><span id="getOptionalSubject2"></span></td>
+                <td id="printFourthGPA"></td>
+                <td id="printFourthGrade"></td>
+            </tr>
+        </table>
+        <div class="totalGPA">
+            আপনার GPA
+            <div class="GPA" id="printHSCGPA"></div>
+        </div>
+        <div class="totalGPA">
+            আপনার গ্রেড
+            <div class="GPA" id="printHSCGrade"></div>
+        </div>
+        <input type="submit" value="আবার ফলাফল বার করুন" class="inputSubmit" onclick="reset()"></input>
+    </div>
+    <script>
+        function porobortee1() {
+            document.getElementById("firstOption").style.display = "none";
+            document.getElementById("secondOption").style.display = "block";
+        }
+        function porobortee2() {
+            var jscBangla = document.getElementById("jscBangla").value;
+            var jscEnglish = document.getElementById("jscEnglish").value;
+            var jscICT = document.getElementById("jscICT").value;
+            var jscScience = document.getElementById("jscScience").value;
+            var jscMath = document.getElementById("jscMath").value;
+            if (jscBangla>100 || jscEnglish>100 || jscICT>50 || jscMath>100 || jscScience>100 || jscBangla<1 || jscEnglish<1 || jscICT<50 || jscMath<1 || jscScience<1){
+                alert("সঠিক নম্বর দিন, কোনো বিষয়ের নম্বর সীমার বেশি বা কম হয়ে গেছে!")
+            }  else {
+                document.getElementById("secondOption").style.display = "none";
+                var optionalSubject = document.getElementById("optionalSubject").value;
+                document.getElementById("getOptionalSubject").innerHTML = optionalSubject;
+                if (optionalSubject == "জীববিজ্ঞান") {
+                    document.getElementById("printMainSubject").innerHTML = "উচ্চতর গণিত";
+                } else {
+                    document.getElementById("printMainSubject").innerHTML = "জীববিজ্ঞান";
+                }
+                document.getElementById("thirdOption").style.display = "block";
+            }
+        }
+        function porobortee3() {
+            var sscBangla = document.getElementById("sscBangla").value;
+            var sscEnglish = document.getElementById("sscEnglish").value;
+            var sscFourth = document.getElementById("sscFourth").value;
+            var sscICT = document.getElementById("sscICT").value;
+            if (sscBangla>200 || sscEnglish>200 || sscICT>50 || sscFourth>100 || sscBangla<1 || sscEnglish<1 || sscICT<50 || sscFourth<1){
+                alert("সঠিক নম্বর দিন, কোনো বিষয়ের নম্বর সীমার বেশি বা কম হয়ে গেছে!")
+            } else {
+                document.getElementById("thirdOption").style.display = "none";
+                document.getElementById("fourthOption").style.display = "block";
+            }
+        }
+        function porobortee4() {
+            document.getElementById("fourthOption").style.display = "none";
+            document.getElementById("finalOption").style.display = "block";
+
+            var jscBangla = document.getElementById("jscBangla").value;
+            var jscEnglish = document.getElementById("jscEnglish").value;
+            var jscICT = document.getElementById("jscICT").value;
+            var jscScience = document.getElementById("jscScience").value;
+            var jscMath = document.getElementById("jscMath").value;
+            
+            var sscBangla = document.getElementById("sscBangla").value;
+            var sscEnglish = document.getElementById("sscEnglish").value;
+            var sscFourth = document.getElementById("sscFourth").value;
+            var sscICT = document.getElementById("sscICT").value;
+
+
+            var hscBangla = ((parseInt(jscBangla)/100)*25)+(((parseInt(sscBangla)/2)/100)*75);
+            var hscEnglish = ((parseInt(jscEnglish)/100)*25)+(((parseInt(sscEnglish)/2)/100)*75);
+            var hscICT = ((parseInt(jscICT)/50)*25)+((parseInt(sscICT)/50)*75);
+            var hscFourth = (((parseInt(jscMath)+parseInt(jscScience))/200)*25)+((parseInt(sscFourth)/100)*75);
+
+            function GPACalc(a) {
+                var returnValue;
+                if (a >= 80) {
+                    returnValue = 5;
+                } else if (a >= 70) {
+                    returnValue = 4.5;
+                } else if (a >= 60) {
+                    returnValue = 4;
+                } else if (a >= 50) {
+                    returnValue = 3;
+                } else if (a >= 40) {
+                    returnValue = 2;
+                } else if (a >= 33) {
+                    returnValue = 1;
+                } else {
+                    returnValue = 0;
+                }
+                return returnValue.toFixed(2);
+            }
+
+            var hscBanglaGPA = GPACalc(hscBangla);
+            var hscEnglishGPA = GPACalc(hscEnglish);
+            var hscICTGPA = GPACalc(hscICT);
+            var hscFourthGPA = GPACalc(hscFourth);
+            
+            var hscPhysicsGPA = parseInt(document.getElementById("hscPhysics").value).toFixed(2);
+            var hscChemistryGPA = parseInt(document.getElementById("hscChemistry").value).toFixed(2);
+            var hscMainGPA = parseInt(document.getElementById("hscMain").value).toFixed(2);
+
+
+            function GradeCalc(b) {
+                var returnValue;
+                if (b == 5.00) {
+                    returnValue = "A+";
+                } else if (b == 4.50) {
+                    returnValue = "A";
+                } else if (b >= 4.00) {
+                    returnValue = "A-";
+                } else if (b >= 3.00) {
+                    returnValue = "B";
+                } else if (b >= 2.00) {
+                    returnValue = "C";
+                } else if (b >= 1.00) {
+                    returnValue = "D";
+                } else {
+                    returnValue = "F";
+                }
+                return returnValue;
+            }
+
+            var hscBanglaGrade = GradeCalc(hscBanglaGPA);
+            var hscEnglishGrade = GradeCalc(hscEnglishGPA);
+            var hscICTGrade = GradeCalc(hscICTGPA);
+            var hscFourthGrade = GradeCalc(hscFourthGPA);
+            var hscPhysicsGrade = GradeCalc(hscPhysicsGPA);
+            var hscChemistryGrade = GradeCalc(hscChemistryGPA);
+            var hscMainGrade = GradeCalc(hscMainGPA);
+
+            var hscGPA = (parseInt(hscBanglaGPA)+parseInt(hscEnglishGPA)+parseInt(hscICTGPA)+parseInt(hscPhysicsGPA)+parseInt(hscChemistryGPA)+parseInt(hscMainGPA)+parseInt(hscFourthGPA)-2)/6;
+            var finalHscGPA;
+            if (hscGPA > 5) {
+                finalHscGPA = "5.00";
+            } else if (hscBanglaGPA == 0.00) {
+                finalHscGPA = "0.00";
+            } else if (hscEnglishGPA == 0.00) {
+                finalHscGPA = "0.00";
+            } else if (hscICTGPA == 0.00) {
+                finalHscGPA = "0.00";
+            } else if (hscPhysicsGPA == 0.00) {
+                finalHscGPA = "0.00";
+            } else if (hscChemistryGPA == 0.00) {
+                finalHscGPA = "0.00";
+            } else if (hscMainGPA == 0.00) {
+                finalHscGPA = "0.00";
+            } else {
+                finalHscGPA = hscGPA.toFixed(2)
+            }
+            var finalHscGrade = GradeCalc(finalHscGPA);
+            
+            var optionalSubject = document.getElementById("optionalSubject").value;
+            document.getElementById("getOptionalSubject2").innerHTML = optionalSubject;
+            if (optionalSubject == "জীববিজ্ঞান") {
+                document.getElementById("printMainSubject2").innerHTML = "উচ্চতর গণিত";
+            } else {
+                document.getElementById("printMainSubject2").innerHTML = "জীববিজ্ঞান";
+            }
+
+            document.getElementById("printBanglaGrade").innerHTML = hscBanglaGrade;
+            document.getElementById("printEnglishGrade").innerHTML = hscEnglishGrade;
+            document.getElementById("printICTGrade").innerHTML = hscICTGrade;
+            document.getElementById("printFourthGrade").innerHTML = hscFourthGrade;
+            document.getElementById("printPhysicsGrade").innerHTML = hscPhysicsGrade;
+            document.getElementById("printChemistryGrade").innerHTML = hscChemistryGrade;
+            document.getElementById("printMainGrade").innerHTML = hscMainGrade;
+
+            document.getElementById("printBanglaGPA").innerHTML = hscBanglaGPA;
+            document.getElementById("printEnglishGPA").innerHTML = hscEnglishGPA;
+            document.getElementById("printICTGPA").innerHTML = hscICTGPA;
+            document.getElementById("printFourthGPA").innerHTML = hscFourthGPA;
+            document.getElementById("printPhysicsGPA").innerHTML = hscPhysicsGPA;
+            document.getElementById("printChemistryGPA").innerHTML = hscChemistryGPA;
+            document.getElementById("printMainGPA").innerHTML = hscMainGPA;
+
+            
+            document.getElementById("printHSCGPA").innerHTML = finalHscGPA;
+            document.getElementById("printHSCGrade").innerHTML = finalHscGrade;
+
+        }
+
+        function reset() {
+            document.getElementById("finalOption").style.display = "none";
+            document.getElementById("firstOption").style.display = "block";
+        }
+    </script>
+</body>
+</html>
