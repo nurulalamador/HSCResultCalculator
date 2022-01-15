@@ -401,17 +401,17 @@
 
             function GradeCalc(b) {
                 var returnValue;
-                if (b >= 5.00) {
+                if (parseFloat(b) >= 5) {
                     returnValue = "A+";
-                } else if (b >= 4.00) {
+                } else if (parseFloat(b) >= 4) {
                     returnValue = "A";
-                } else if (b >= 3.50) {
+                } else if (parseFloat(b) >= 3.5) {
                     returnValue = "A-";
-                } else if (b >= 3.00) {
+                } else if (parseFloat(b) >= 3) {
                     returnValue = "B";
-                } else if (b >= 2.00) {
+                } else if (parseFloat(b) >= 2) {
                     returnValue = "C";
-                } else if (b >= 1.00) {
+                } else if (parseFloat(b) >= 1) {
                     returnValue = "D";
                 } else {
                     returnValue = "F";
