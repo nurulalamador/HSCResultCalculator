@@ -364,10 +364,10 @@
             var sscICT = document.getElementById("sscICT").value;
 
 
-            var hscBangla = ((parseInt(jscBangla)/100)*25)+(((parseInt(sscBangla)/2)/100)*75);
-            var hscEnglish = ((parseInt(jscEnglish)/100)*25)+(((parseInt(sscEnglish)/2)/100)*75);
-            var hscICT = ((parseInt(jscICT)/50)*25)+((parseInt(sscICT)/50)*75);
-            var hscFourth = (((parseInt(jscMath)+parseInt(jscScience))/200)*25)+((parseInt(sscFourth)/100)*75);
+            var hscBangla = ((parseFloat(jscBangla)/100)*25)+(((parseFloat(sscBangla)/2)/100)*75);
+            var hscEnglish = ((parseFloat(jscEnglish)/100)*25)+(((parseFloat(sscEnglish)/2)/100)*75);
+            var hscICT = ((parseFloat(jscICT)/50)*25)+((parseFloat(sscICT)/50)*75);
+            var hscFourth = (((parseFloat(jscMath)+parseFloat(jscScience))/200)*25)+((parseFloat(sscFourth)/100)*75);
 
             function GPACalc(a) {
                 var returnValue;
@@ -394,9 +394,9 @@
             var hscICTGPA = GPACalc(hscICT);
             var hscFourthGPA = GPACalc(hscFourth);
             
-            var hscPhysicsGPA = parseInt(document.getElementById("hscPhysics").value).toFixed(2);
-            var hscChemistryGPA = parseInt(document.getElementById("hscChemistry").value).toFixed(2);
-            var hscMainGPA = parseInt(document.getElementById("hscMain").value).toFixed(2);
+            var hscPhysicsGPA = parseFloat(document.getElementById("hscPhysics").value).toFixed(2);
+            var hscChemistryGPA = parseFloat(document.getElementById("hscChemistry").value).toFixed(2);
+            var hscMainGPA = parseFloat(document.getElementById("hscMain").value).toFixed(2);
 
 
             function GradeCalc(b) {
@@ -427,7 +427,7 @@
             var hscChemistryGrade = GradeCalc(hscChemistryGPA);
             var hscMainGrade = GradeCalc(hscMainGPA);
 
-            var hscGPA = (parseInt(hscBanglaGPA)+parseInt(hscEnglishGPA)+parseInt(hscICTGPA)+parseInt(hscPhysicsGPA)+parseInt(hscChemistryGPA)+parseInt(hscMainGPA)+parseInt(hscFourthGPA)-2)/6;
+            var hscGPA = (parseFloat(hscBanglaGPA)+parseFloat(hscEnglishGPA)+parseFloat(hscICTGPA)+parseFloat(hscPhysicsGPA)+parseFloat(hscChemistryGPA)+parseFloat(hscMainGPA)+parseFloat(hscFourthGPA)-2)/6;
             var finalHscGPA;
             if (hscGPA > 5) {
                 finalHscGPA = "5.00";
