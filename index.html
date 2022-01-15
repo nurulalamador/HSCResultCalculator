@@ -219,8 +219,8 @@
                     <td>
                         <select id="hscPhysics" class="inputSmall">
                             <option value="5">A+</option>
-                            <option value="4.5">A</option>
-                            <option value="4">A-</option>
+                            <option value="4">A</option>
+                            <option value="3.5">A-</option>
                             <option value="3">B</option>
                             <option value="2">C</option>
                             <option value="1">D</option>
@@ -232,8 +232,8 @@
                     <td>
                         <select id="hscChemistry" class="inputSmall">
                             <option value="5">A+</option>
-                            <option value="4.5">A</option>
-                            <option value="4">A-</option>
+                            <option value="4">A</option>
+                            <option value="3.5">A-</option>
                             <option value="3">B</option>
                             <option value="2">C</option>
                             <option value="1">D</option>
@@ -245,8 +245,8 @@
                     <td>
                         <select id="hscMain" class="inputSmall">
                             <option value="5">A+</option>
-                            <option value="4.5">A</option>
-                            <option value="4">A-</option>
+                            <option value="4">A</option>
+                            <option value="3.5">A-</option>
                             <option value="3">B</option>
                             <option value="2">C</option>
                             <option value="1">D</option>
@@ -374,9 +374,9 @@
                 if (a >= 80) {
                     returnValue = 5;
                 } else if (a >= 70) {
-                    returnValue = 4.5;
-                } else if (a >= 60) {
                     returnValue = 4;
+                } else if (a >= 60) {
+                    returnValue = 3.5;
                 } else if (a >= 50) {
                     returnValue = 3;
                 } else if (a >= 40) {
@@ -403,9 +403,9 @@
                 var returnValue;
                 if (b == 5.00) {
                     returnValue = "A+";
-                } else if (b == 4.50) {
+                } else if (b == 4.00) {
                     returnValue = "A";
-                } else if (b >= 4.00) {
+                } else if (b >= 3.50) {
                     returnValue = "A-";
                 } else if (b >= 3.00) {
                     returnValue = "B";
